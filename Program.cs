@@ -1,5 +1,6 @@
 ﻿using CodeSignal.DataStructure.Search;
 using CodeSignal.DataStructure.Sort;
+using CodeSignal.HackerRank;
 
 //Console.WriteLine("Hello, World!");
 //Console.WriteLine(AddBorder(new string[] { "abc", "ded" }));
@@ -10,6 +11,11 @@ using CodeSignal.DataStructure.Sort;
 //Console.WriteLine(IsValid("()[]{}"));
 //Console.WriteLine(alternatingSums(new int[] { 1, 2, 2 }));
 //BFS();
+//DiagDifference();
+
+InterviewPreparationKit.CountingSort(new List<int> { 1, 1, 3, 2, 1 });
+
+
 
 int[] sortedArr = BubbleSort.Sort(new int[] { 4, 3, 5, 2, 1 });
 
@@ -155,7 +161,7 @@ static bool IsValid(string s)
 
     LinkedList<string> linkedlist = new();
 
-    
+
     while (count <= len / 2)
     {
         if (s.IndexOf('{') == s.IndexOf('}') - 1)
@@ -171,7 +177,7 @@ static bool IsValid(string s)
         if (s.Length == 0) return true;
         count++;
     }
-    
+
     return s.Length == 0;
 }
 
@@ -192,3 +198,37 @@ static void BFS()
     tree.PrintLevelOrder();
     Console.WriteLine();
 }
+
+static void MinMaxSum()
+{
+    List<int> list = new() { 254961783, 604179258, 462517083, 967304281, 860273491 };
+    list.Sort();
+    List<int> distinctList = list.Distinct().ToList();
+
+    foreach (var item in distinctList)
+    {
+        if (list.Count(x => x == item) > 1) Console.WriteLine(" Unique item is {0} {1}", item);
+    };
+
+    long minSum = list.Take(4).Sum(x => Convert.ToInt64(x));
+    Int64 maxSum = list.TakeLast(4).Sum(x => Convert.ToInt64(x));
+
+    Console.WriteLine("{0} {1}", minSum, maxSum);
+}
+
+static void DiagDifference()
+{
+    int n = Convert.ToInt32(Console.ReadLine().Trim());
+
+    List<List<int>> arr = new List<List<int>>();
+
+    for (int i = 0; i < n; i++)
+    {
+        arr.Add(Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList());
+    }
+
+    int result = InterviewPreparationKit.DiagonalDifference(arr);
+
+    Console.WriteLine(result);
+}
+
