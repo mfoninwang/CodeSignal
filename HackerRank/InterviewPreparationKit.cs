@@ -42,9 +42,21 @@
             return freqArr;    
         }
 
-        public static void ZigZagSequence()
+        public static int TowerBreakers(int n, int m)
         {
+            int[] towers = new int[n];
 
+            for (int i = 0; i < n; i++)
+            {
+                towers[i] = m;
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+
+                int y = towers[i] - 1;
+            }
+            return 0;
         }
     }
 
